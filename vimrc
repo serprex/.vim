@@ -10,7 +10,6 @@ set noexpandtab
 set autoindent
 set background=dark
 set mouse=a
-set ttym=urxvt
 set hlsearch
 set sw=4
 set ts=4
@@ -39,3 +38,5 @@ ca q q!
 map K <Nop>
 nmap ; :
 nnoremap <CR> :noh<CR><CR>
+nnoremap <Space> :noh<CR><Space>
+command Te tabedit

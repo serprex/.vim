@@ -1,0 +1,1 @@
+git -C ${0%/*} submodule foreach git pull origin master
