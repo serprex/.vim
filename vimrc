@@ -36,6 +36,9 @@ filetype plugin indent off
 set omnifunc=syntaxcomplete#Complete
 ca q q!
 map K <Nop>
+map <F1> :noh<CR><Esc>
+imap <F1> :noh<CR><Esc>
+nmap <F1> :noh<CR>
 nmap ; :
 nnoremap <CR> :noh<CR><CR>
 nnoremap <Space> :noh<CR><Space>
