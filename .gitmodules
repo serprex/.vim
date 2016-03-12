@@ -1,3 +1,11 @@
 [submodule "bundle/editorconfig-vim"]
 	path = bundle/editorconfig-vim
 	url = git@github.com:editorconfig/editorconfig-vim
+[submodule "bundle/rust.vim"]
+	path = bundle/rust.vim
+[submodule "bundle/sourcerer.vim"]
+	path = bundle/sourcerer.vim
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+[submodule "bundle/vim-javascript"]
+	path = bundle/vim-javascript

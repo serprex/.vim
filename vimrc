@@ -17,6 +17,7 @@ set lazyredraw
 set ttyfast
 set ru
 set noswapfile
+set shortmess+=I
 execute pathogen#infect()
 if &term == "st-256color"
 	colorscheme sourcerer
