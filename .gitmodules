@@ -9,3 +9,9 @@
 	path = bundle/syntastic
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
+[submodule "bundle/vim-easymotion"]
+	path = bundle/vim-easymotion
+	url = git@github.com:easymotion/vim-easymotion
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = git@github.com:tpope/vim-sleuth

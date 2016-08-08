@@ -1,5 +1,8 @@
+set nocompatible
 set noeol
 set nofixeol
+set nobackup
+set viminfo="NONE"
 set showcmd
 set is
 set nowrap
@@ -31,14 +34,16 @@ syntax on
 hi CursorLine cterm=underline ctermbg=NONE ctermfg=NONE
 hi String ctermfg=blue
 hi Number ctermfg=blue
+hi pythonException ctermfg=blue
+hi pythonExClass ctermfg=blue
+hi pythonDecorator ctermfg=white
 hi MatchParen ctermfg=black
 hi Normal ctermfg=white
 filetype plugin indent off
 set omnifunc=syntaxcomplete#Complete
 ca q q!
-map K <Nop>
+map K 12k
 map <F1> :noh<CR><Esc>
-imap <F1> :noh<CR><Esc>
 nmap <F1> :noh<CR>
 nmap ; :
 nnoremap <CR> :noh<CR><CR>
