@@ -1,1 +1,1 @@
-(cd ${0%/*} && git submodule update --recursive)
+(cd ${0%/*} && git submodule foreach --recursive git fetch)
