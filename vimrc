@@ -21,7 +21,6 @@ set ttyfast
 set ru
 set noswapfile
 set shortmess+=I
-execute pathogen#infect()
 if &term == "st-256color"
 	colorscheme sourcerer
 else
@@ -42,8 +41,9 @@ hi Normal ctermfg=white
 filetype plugin indent off
 set omnifunc=syntaxcomplete#Complete
 ca q q!
-map K 12k
-map <F1> :noh<CR><Esc>
+nnoremap K 12k
+nnoremap Q <Nop>
+nnoremap <F1> :noh<CR><Esc>
 nmap <F1> :noh<CR>
 nmap ; :
 nnoremap <CR> :noh<CR><CR>
