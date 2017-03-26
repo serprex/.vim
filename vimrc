@@ -7,6 +7,7 @@ set showcmd
 set is
 set nowrap
 set number
+set relativenumber
 set ic
 set smartcase
 set noexpandtab
@@ -21,6 +22,8 @@ set ttyfast
 set ru
 set noswapfile
 set shortmess+=I
+set wildmenu
+set wildmode=longest:list,full
 if &term == "st-256color"
 	colorscheme sourcerer
 else
@@ -36,16 +39,17 @@ hi Number ctermfg=blue
 hi pythonException ctermfg=blue
 hi pythonExClass ctermfg=blue
 hi pythonDecorator ctermfg=white
-hi MatchParen ctermfg=black
+hi MatchParen ctermfg=black ctermbg=red
 hi Normal ctermfg=white
 filetype plugin indent off
-set omnifunc=syntaxcomplete#Complete
 ca q q!
 nnoremap K 12k
 nnoremap Q <Nop>
 nnoremap <F1> :noh<CR><Esc>
+imap <F1> <nop>
 nmap <F1> :noh<CR>
 nmap ; :
+map Y y$
 nnoremap <CR> :noh<CR><CR>
 nnoremap <Space> :noh<CR><Space>
 command Te tabedit
