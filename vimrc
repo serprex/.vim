@@ -31,6 +31,9 @@ else
 endif
 let g:clang_c_options='-std=gnu11'
 let g:netrw_dirhistmax=0
+let g:prettier#autoformat = 0
+let g:prettier#quickfix_enabled = 0
+autocmd BufWritePre *.js,*.css PrettierAsync
 set cursorline
 syntax on
 hi CursorLine cterm=underline ctermbg=NONE ctermfg=NONE
@@ -42,7 +45,6 @@ hi pythonDecorator ctermfg=white
 hi MatchParen ctermfg=black ctermbg=red
 hi Normal ctermfg=white
 filetype plugin indent off
-ca q q!
 nnoremap K 12k
 nnoremap Q <Nop>
 nnoremap <F1> :noh<CR><Esc>
@@ -52,4 +54,3 @@ nmap ; :
 map Y y$
 nnoremap <CR> :noh<CR><CR>
 nnoremap <Space> :noh<CR><Space>
-command Te tabedit

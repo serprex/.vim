@@ -15,3 +15,9 @@
 [submodule "bundle/vim-sleuth"]
 	path = pack/pack/start/vim-sleuth
 	url = git@github.com:tpope/vim-sleuth
+[submodule "pack/pack/start/vim-wasm"]
+	path = pack/pack/start/vim-wasm
+	url = git@github.com:rhysd/vim-wasm
+[submodule "pack/pack/start/vim-prettier"]
+	path = pack/pack/start/vim-prettier
+	url = git@github.com:prettier/vim-prettier
