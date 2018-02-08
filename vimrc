@@ -54,3 +54,4 @@ nmap ; :
 map Y y$
 nnoremap <CR> :noh<CR><CR>
 nnoremap <Space> :noh<CR><Space>
+au BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
