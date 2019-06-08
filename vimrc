@@ -33,8 +33,8 @@ let g:clang_c_options='-std=gnu11'
 let g:netrw_dirhistmax=0
 let g:prettier#autoformat = 0
 let g:prettier#quickfix_enabled = 0
-let g:prettier#config#parser = 'babylon'
-autocmd BufWritePre *.js,*.css PrettierAsync
+let g:prettier#config#parser = 'babel'
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css Prettier
 set cursorline
 syntax on
 hi CursorLine cterm=underline ctermbg=NONE ctermfg=NONE
