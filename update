@@ -1,2 +1,19 @@
-#!/bin/sh
-(cd ${0%/*} && git submodule foreach --recursive git fetch)
+#!/bin/bash
+pushd ${0%/*}
+mkdir -p pack/pack/start
+pushd pack/pack/start
+(git clone https://github.com/editorconfig/editorconfig-vim
+git clone https://github.com/rust-lang/rust.vim
+git clone https://github.com/xero/sourcerer.vim
+git clone https://github.com/vim-syntastic/syntastic
+git clone https://github.com/easymotion/vim-easymotion
+git clone https://github.com/prettier/vim-prettier
+git clone https://github.co/tpope/vim-sleuth
+) 2>/dev/null
+popd
+for d in pack/pack/start/*
+do pushd "$d"
+git pull
+popd
+done
+popd
