@@ -20,20 +20,22 @@ set ts=4
 set lazyredraw
 set ttyfast
 set ru
+set encoding=utf8
 set noswapfile
 set shortmess+=I
 set wildmenu
 set wildmode=longest:list,full
-if &term == "st-256color"
-	colorscheme sourcerer
-else
+let g:mapleader=","
+if &term == "linux"
 	colorscheme slate
+else
+	colorscheme sourcerer
 endif
-let g:clang_c_options='-std=gnu11'
 let g:netrw_dirhistmax=0
 let g:prettier#autoformat = 0
 let g:prettier#quickfix_enabled = 0
 let g:prettier#config#parser = 'babel'
+let g:syntastic_mode_map = { 'mode': 'passive' }
 autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css Prettier
 set cursorline
 syntax on
@@ -48,13 +50,19 @@ hi Normal ctermfg=white
 filetype plugin indent off
 nnoremap K 12k
 nnoremap Q <Nop>
-nnoremap <F1> :noh<CR><Esc>
+nnoremap <F1> :noh<CR><Esc><C-G>
 imap <F1> <nop>
-nmap <F1> :noh<CR>
+nmap <F1> :noh<CR><C-G>
 nmap ; :
 map Y y$
-nnoremap <CR> :noh<CR><CR>
-nnoremap <Space> :noh<CR><Space>
+nnoremap <CR> :noh<CR><CR><C-G>
+nnoremap <Space> :noh<CR><Space><C-G>
+nnoremap <leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<cr>
+nnoremap <Leader>. :YcmCompleter GoTo<CR>
+nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>l :YcmCompleter GetType<CR>
+nnoremap <Leader>d :YcmCompleter GetDoc<CR>
+
 au BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
 if filereadable(expand("~/.vim/local_epilogue"))
 	exe 'so' expand("~/.vim/local_epilogue")
