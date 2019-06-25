@@ -25,6 +25,7 @@ set noswapfile
 set shortmess+=I
 set wildmenu
 set wildmode=longest:list,full
+set wildignore+=*.o
 let g:mapleader=","
 if &term == "linux"
 	colorscheme slate
@@ -52,16 +53,17 @@ nnoremap K 12k
 nnoremap Q <Nop>
 nnoremap <F1> :noh<CR><Esc><C-G>
 imap <F1> <nop>
-nmap <F1> :noh<CR><C-G>
+inoremap <silent> <C-s> <C-O>:w<CR>
+nmap <silent> <F1> :noh<CR>
 nmap ; :
 map Y y$
-nnoremap <CR> :noh<CR><CR><C-G>
-nnoremap <Space> :noh<CR><Space><C-G>
-nnoremap <leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<cr>
+nnoremap <silent> <CR> :noh<CR><CR><C-G>
+nnoremap <silent> <Space> :noh<CR><Space><C-G>
+nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 nnoremap <Leader>. :YcmCompleter GoTo<CR>
 nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
 nnoremap <Leader>l :YcmCompleter GetType<CR>
-nnoremap <Leader>d :YcmCompleter GetDoc<CR>
+map <Leader> <Plug>(easymotion-prefix)
 
 au BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
 if filereadable(expand("~/.vim/local_epilogue"))
