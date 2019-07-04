@@ -2,14 +2,13 @@
 pushd ${0%/*}
 mkdir -p pack/pack/start
 pushd pack/pack/start
-(git clone https://github.com/editorconfig/editorconfig-vim
-git clone https://github.com/rust-lang/rust.vim
-git clone https://github.com/xero/sourcerer.vim
-git clone https://github.com/vim-syntastic/syntastic
-git clone https://github.com/easymotion/vim-easymotion
-git clone https://github.com/prettier/vim-prettier
-git clone https://github.com/tpope/vim-sleuth
-git clone https://github.com/Valloric/YouCompleteMe
+(git clone https://github.com/editorconfig/editorconfig-vim &
+git clone https://github.com/xero/sourcerer.vim &
+git clone https://github.com/justinmk/vim-sneak &
+git clone https://github.com/prettier/vim-prettier &
+git clone https://github.com/tpope/vim-sleuth &
+git clone https://github.com/Valloric/YouCompleteMe &
+wait
 ) 2>/dev/null
 popd
 for d in pack/pack/start/*

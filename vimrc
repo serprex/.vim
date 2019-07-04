@@ -41,13 +41,17 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css Prettier
 set cursorline
 syntax on
 hi CursorLine cterm=underline ctermbg=NONE ctermfg=NONE
+hi Search ctermbg=grey
 hi String ctermfg=blue
 hi Number ctermfg=blue
+hi cConstant ctermfg=blue
 hi pythonException ctermfg=blue
 hi pythonExClass ctermfg=blue
 hi pythonDecorator ctermfg=white
 hi MatchParen ctermfg=black ctermbg=red
 hi Normal ctermfg=white
+hi YcmWarningSection ctermfg=red
+hi YcmErrorSection ctermfg=red
 filetype plugin indent off
 nnoremap K 12k
 nnoremap Q <Nop>
@@ -63,7 +67,12 @@ nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 nnoremap <Leader>. :YcmCompleter GoTo<CR>
 nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
 nnoremap <Leader>l :YcmCompleter GetType<CR>
-map <Leader> <Plug>(easymotion-prefix)
+let g:sneak#label = 1
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
 
 au BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
 if filereadable(expand("~/.vim/local_epilogue"))
