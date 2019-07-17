@@ -23,9 +23,11 @@ set ru
 set encoding=utf8
 set noswapfile
 set shortmess+=I
+set whichwrap+=<,>,[,]
 set wildmenu
 set wildmode=longest:list,full
 set wildignore+=*.o
+set completeopt-=preview
 let g:mapleader=","
 if &term == "linux"
 	colorscheme slate
@@ -36,7 +38,9 @@ let g:netrw_dirhistmax=0
 let g:prettier#autoformat = 0
 let g:prettier#quickfix_enabled = 0
 let g:prettier#config#parser = 'babel'
-let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:ycm_key_list_select_completion = ['<TAB>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>']
+let g:ycm_key_list_stop_completion = ['<UP>', '<DOWN>']
 autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css Prettier
 set cursorline
 syntax on
@@ -52,6 +56,7 @@ hi MatchParen ctermfg=black ctermbg=red
 hi Normal ctermfg=white
 hi YcmWarningSection ctermfg=red
 hi YcmErrorSection ctermfg=red
+hi SneakLabel ctermfg=black ctermbg=white
 filetype plugin indent off
 nnoremap K 12k
 nnoremap Q <Nop>
@@ -67,12 +72,15 @@ nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 nnoremap <Leader>. :YcmCompleter GoTo<CR>
 nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
 nnoremap <Leader>l :YcmCompleter GetType<CR>
+nnoremap <C-B> :Buffers
 let g:sneak#label = 1
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+map z <Plug>Sneak_s
+map Z <Plug>Sneak_S
 
+if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
+	source /usr/share/doc/fzf/examples/fzf.vim
+endif
+command W w
 
 au BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
 if filereadable(expand("~/.vim/local_epilogue"))
