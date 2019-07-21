@@ -2,12 +2,12 @@
 pushd ${0%/*}
 mkdir -p pack/pack/start
 pushd pack/pack/start
-(git clone https://github.com/editorconfig/editorconfig-vim &
-git clone https://github.com/xero/sourcerer.vim &
-git clone https://github.com/justinmk/vim-sneak &
-git clone https://github.com/prettier/vim-prettier &
-git clone https://github.com/tpope/vim-sleuth &
-git clone https://github.com/Valloric/YouCompleteMe &
+(git clone https://github.com/editorconfig/editorconfig-vim --single-branch &
+git clone https://github.com/xero/sourcerer.vim --single-branch &
+git clone https://github.com/justinmk/vim-sneak --single-branch &
+git clone https://github.com/prettier/vim-prettier -b release/1.x --single-branch &
+git clone https://github.com/tpope/vim-sleuth --single-branch &
+git clone https://github.com/Valloric/YouCompleteMe --single-branch &
 wait
 ) 2>/dev/null
 popd
