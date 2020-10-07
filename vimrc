@@ -28,6 +28,7 @@ set wildmenu
 set wildmode=longest:list,full
 set wildignore+=*.o
 set completeopt-=preview
+set pastetoggle=<F2>
 let g:mapleader=","
 if &term == "linux"
 	colorscheme slate
@@ -35,13 +36,12 @@ else
 	colorscheme sourcerer
 endif
 let g:netrw_dirhistmax=0
-let g:prettier#autoformat = 0
-let g:prettier#quickfix_enabled = 0
-let g:prettier#config#parser = 'babel'
-let g:ycm_key_list_select_completion = ['<TAB>']
-let g:ycm_key_list_previous_completion = ['<S-TAB>']
-let g:ycm_key_list_stop_completion = ['<UP>', '<DOWN>']
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css Prettier
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 set cursorline
 syntax on
 hi CursorLine cterm=underline ctermbg=NONE ctermfg=NONE
@@ -54,8 +54,6 @@ hi pythonExClass ctermfg=blue
 hi pythonDecorator ctermfg=white
 hi MatchParen ctermfg=black ctermbg=red
 hi Normal ctermfg=white
-hi YcmWarningSection ctermfg=red
-hi YcmErrorSection ctermfg=red
 hi SneakLabel ctermfg=black ctermbg=white
 filetype plugin indent off
 nnoremap K 12k
@@ -69,13 +67,12 @@ map Y y$
 nnoremap <silent> <CR> :noh<CR><CR><C-G>
 nnoremap <silent> <Space> :noh<CR><Space><C-G>
 nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
-nnoremap <Leader>. :YcmCompleter GoTo<CR>
-nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
-nnoremap <Leader>l :YcmCompleter GetType<CR>
+nmap <Leader>. <Plug>(coc-definition)
 nnoremap <C-B> :Buffers
 let g:sneak#label = 1
 map z <Plug>Sneak_s
 map Z <Plug>Sneak_S
+xnoremap <Leader>m <esc>:'<,'>w !clip.exe<CR>
 
 if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
 	source /usr/share/doc/fzf/examples/fzf.vim
