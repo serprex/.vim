@@ -40,7 +40,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css Prettier
+autocmd BufWritePre *.mjs,*.cjs,*.js,*.jsx,*.ts,*.tsx,*.css Prettier
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 set cursorline
 syntax on
@@ -68,11 +68,13 @@ nnoremap <silent> <CR> :noh<CR><CR><C-G>
 nnoremap <silent> <Space> :noh<CR><Space><C-G>
 nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 nmap <Leader>. <Plug>(coc-definition)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <C-B> :Buffers
 let g:sneak#label = 1
 map z <Plug>Sneak_s
 map Z <Plug>Sneak_S
-xnoremap <Leader>m <esc>:'<,'>w !clip.exe<CR>
+xnoremap <Leader>m <esc>:'<,'>w !/mnt/c/Windows/System32/clip.exe<CR>
 
 if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
 	source /usr/share/doc/fzf/examples/fzf.vim
