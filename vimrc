@@ -2,6 +2,7 @@ set nocompatible
 set noeol
 set nofixeol
 set nobackup
+set ttimeoutlen=0
 set viminfo="NONE"
 set showcmd
 set is
