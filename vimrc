@@ -37,11 +37,10 @@ else
 	colorscheme sourcerer
 endif
 let g:netrw_dirhistmax=0
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-autocmd BufWritePre *.mjs,*.cjs,*.js,*.jsx,*.ts,*.tsx,*.css Prettier
+autocmd BufWritePre *.mjs,*.cjs,*.js,*.jsx,*.ts,*.tsx,*.css Neoformat
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 set cursorline
 syntax on
@@ -50,10 +49,12 @@ hi Search ctermbg=grey
 hi String ctermfg=blue
 hi Number ctermfg=blue
 hi cConstant ctermfg=blue
+hi Constant ctermfg=blue
+hi Boolean ctermfg=blue
 hi pythonException ctermfg=blue
 hi pythonExClass ctermfg=blue
 hi pythonDecorator ctermfg=white
-hi MatchParen ctermfg=black ctermbg=red
+hi MatchParen ctermfg=black ctermbg=darkred
 hi Normal ctermfg=white
 hi SneakLabel ctermfg=black ctermbg=white
 filetype plugin indent off
@@ -68,14 +69,42 @@ map Y y$
 nnoremap <silent> <CR> :noh<CR><CR><C-G>
 nnoremap <silent> <Space> :noh<CR><Space><C-G>
 nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
-nmap <Leader>. <Plug>(coc-definition)
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nnoremap <silent> <Leader>. <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+
 nnoremap <C-B> :Buffers
 let g:sneak#label = 1
 map z <Plug>Sneak_s
 map Z <Plug>Sneak_S
 xnoremap <Leader>m <esc>:'<,'>w !/mnt/c/Windows/System32/clip.exe<CR>
+
+if has('nvim')
+	lua << EOF
+	local nvim_lsp = require 'lspconfig'
+	nvim_lsp.rust_analyzer.setup {
+		-- on_attach = require('completion').on_attach,
+		settings = {
+			["rust-analyzer"] = {
+				diagnostics = {
+					enable = false,
+				},
+				assist = {
+					importGranularity = "module",
+					importPrefix = "by_self",
+				},
+				cargo = {
+					loadOutDirsFromCheck = true
+				},
+				procMacro = {
+					enable = true
+				},
+			}
+		}
+	}
+EOF
+	autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '»', highlight = "NonText", enabled = {"TypeHint", "ChainingHint"} }
+endif
 
 if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
 	source /usr/share/doc/fzf/examples/fzf.vim
@@ -86,3 +115,4 @@ au BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
 if filereadable(expand("~/.vim/local_epilogue"))
 	exe 'so' expand("~/.vim/local_epilogue")
 endif
+autocmd WinEnter,BufWinEnter,FocusGained * checktime
