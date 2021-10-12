@@ -71,19 +71,22 @@ nnoremap <silent> <Space> :noh<CR><Space><C-G>
 nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 
 nnoremap <silent> <Leader>. <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> ]g <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> [g <cmd>lua vim.lsp.buf.references()<CR>
 
 nnoremap <C-B> :Buffers
 let g:sneak#label = 1
 map z <Plug>Sneak_s
 map Z <Plug>Sneak_S
-xnoremap <Leader>m <esc>:'<,'>w !/mnt/c/Windows/System32/clip.exe<CR>
+if filereadable('/mnt/c/Windows/System32/clip.exe')
+	xnoremap <Leader>m <esc>:'<,'>w !/mnt/c/Windows/System32/clip.exe<CR>
+endif
 
 if has('nvim')
 	lua << EOF
 	local nvim_lsp = require 'lspconfig'
+
 	nvim_lsp.rust_analyzer.setup {
-		-- on_attach = require('completion').on_attach,
 		settings = {
 			["rust-analyzer"] = {
 				diagnostics = {
@@ -102,6 +105,7 @@ if has('nvim')
 			}
 		}
 	}
+	nvim_lsp.solargraph.setup {}
 EOF
 	autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '»', highlight = "NonText", enabled = {"TypeHint", "ChainingHint"} }
 endif
