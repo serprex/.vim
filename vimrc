@@ -71,8 +71,9 @@ nnoremap <silent> <Space> :noh<CR><Space><C-G>
 nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 
 nnoremap <silent> <Leader>. <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> ]g <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> [g <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <Leader>/ <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> ]g <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> [g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 
 nnoremap <C-B> :Buffers
 let g:sneak#label = 1
