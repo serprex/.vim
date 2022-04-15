@@ -72,8 +72,8 @@ nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 
 nnoremap <silent> <Leader>. <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <Leader>/ <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> ]g <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> [g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> ]g <cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
 
 nnoremap <C-B> :Buffers
 let g:sneak#label = 1
@@ -106,7 +106,6 @@ if has('nvim')
 			}
 		}
 	}
-	nvim_lsp.solargraph.setup {}
 	nvim_lsp.gopls.setup {}
 EOF
 	autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '»', highlight = "NonText", enabled = {"TypeHint", "ChainingHint"} }
