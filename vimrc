@@ -42,6 +42,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 autocmd BufWritePre *.mjs,*.cjs,*.js,*.jsx,*.ts,*.tsx,*.css Neoformat
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype gitcommit setlocal formatoptions-=t
 set cursorline
 syntax on
 hi CursorLine cterm=underline ctermbg=NONE ctermfg=NONE
@@ -115,7 +116,7 @@ if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
 endif
 command W w
 
-au BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
+autocmd BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
 if filereadable(expand("~/.vim/local_epilogue"))
 	exe 'so' expand("~/.vim/local_epilogue")
 endif
