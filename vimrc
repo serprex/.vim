@@ -108,7 +108,6 @@ if has('nvim')
 	}
 	nvim_lsp.gopls.setup {}
 EOF
-	autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '»', highlight = "NonText", enabled = {"TypeHint", "ChainingHint"} }
 endif
 
 if filereadable("/usr/share/doc/fzf/examples/fzf.vim")

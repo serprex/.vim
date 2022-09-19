@@ -6,7 +6,6 @@ pushd pack/pack/start
 git clone git@github.com:xero/sourcerer.vim --single-branch &
 git clone git@github.com:justinmk/vim-sneak --single-branch &
 git clone git@github.com:tpope/vim-sleuth --single-branch &
-git clone git@github.com:nvim-lua/lsp_extensions.nvim --single-branch &
 git clone git@github.com:neovim/nvim-lspconfig --single-branch &
 git clone git@github.com:sbdchd/neoformat --single-branch &
 wait
