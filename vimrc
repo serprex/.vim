@@ -40,7 +40,7 @@ let g:netrw_dirhistmax=0
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-autocmd BufWritePre *.mjs,*.cjs,*.js,*.jsx,*.ts,*.tsx,*.css Neoformat
+autocmd BufWritePre *.go,*.mjs,*.cjs,*.js,*.jsx,*.ts,*.tsx,*.css Neoformat
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype gitcommit setlocal formatoptions-=t
 set cursorline
@@ -99,10 +99,10 @@ if has('nvim')
 					importPrefix = "by_self",
 				},
 				cargo = {
-					loadOutDirsFromCheck = true
+					loadOutDirsFromCheck = true,
 				},
 				procMacro = {
-					enable = true
+					enable = true,
 				},
 			}
 		}
