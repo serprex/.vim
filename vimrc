@@ -72,9 +72,11 @@ nnoremap <silent> <Space> :noh<CR><Space><C-G>
 nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 
 nnoremap <silent> <Leader>. <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <Leader>/ <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <Leader>\ <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> ]g <cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <Leader>/ <cmd>lua require('fzf-lua').lgrep_curbuf()<CR>
+nnoremap <silent> <Leader>j <cmd>lua require('fzf-lua').files()<CR>
 
 nnoremap <C-B> :Buffers
 let g:sneak#label = 1
@@ -100,6 +102,7 @@ if has('nvim')
 				},
 				cargo = {
 					loadOutDirsFromCheck = true,
+					features = { 'rust-analyzer.cargo.features' },
 				},
 				procMacro = {
 					enable = true,
@@ -107,13 +110,21 @@ if has('nvim')
 			}
 		}
 	}
-	nvim_lsp.gopls.setup {}
+	nvim_lsp.gopls.setup {
+		settings = {
+			gopls = {gofumpt = true},
+		}
+	}
+	nvim_lsp.lua_ls.setup{
+		settings = {
+			diagnostics = {
+				disable = {"lowercase-global"}
+			}
+		}
+	}
 EOF
 endif
 
-if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
-	source /usr/share/doc/fzf/examples/fzf.vim
-endif
 command W w
 
 autocmd BufRead,BufNewFile *.md setlocal wrap linebreak nolist | setlocal ft=
