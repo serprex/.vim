@@ -41,9 +41,9 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype gitcommit setlocal formatoptions-=t
 set cursorline
 syntax on
+let g:seoul256_srgb = 1
 let g:seoul256_background = 234
 colo seoul256
-hi SneakLabel ctermfg=black ctermbg=white
 filetype plugin indent off
 nnoremap K <Nop>
 nnoremap Q <Nop>
@@ -65,9 +65,7 @@ nnoremap <silent> <Leader>/ <cmd>lua require('fzf-lua').lgrep_curbuf()<CR>
 nnoremap <silent> <Leader>f <cmd>lua require('fzf-lua').files()<CR>
 
 nnoremap <C-B> :Buffers
-let g:sneak#label = 1
-map z <Plug>Sneak_s
-map Z <Plug>Sneak_S
+map z <Plug>(leap)
 if filereadable('/mnt/c/Windows/System32/clip.exe')
 	xnoremap <Leader>m <esc>:'<,'>w !/mnt/c/Windows/System32/clip.exe<CR>
 endif
