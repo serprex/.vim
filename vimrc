@@ -15,6 +15,7 @@ set noexpandtab
 set autoindent
 set background=dark
 set mouse=a
+set mousemodel=extend
 set hlsearch
 set sw=4
 set ts=4
@@ -31,11 +32,6 @@ set wildignore+=*.o
 set completeopt-=preview
 set pastetoggle=<F2>
 let g:mapleader=","
-if &term == "linux"
-	colorscheme slate
-else
-	colorscheme sourcerer
-endif
 let g:netrw_dirhistmax=0
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -45,21 +41,11 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype gitcommit setlocal formatoptions-=t
 set cursorline
 syntax on
-hi CursorLine cterm=underline ctermbg=NONE ctermfg=NONE
-hi Search ctermbg=grey
-hi String ctermfg=blue
-hi Number ctermfg=blue
-hi cConstant ctermfg=blue
-hi Constant ctermfg=blue
-hi Boolean ctermfg=blue
-hi pythonException ctermfg=blue
-hi pythonExClass ctermfg=blue
-hi pythonDecorator ctermfg=white
-hi MatchParen ctermfg=black ctermbg=darkred
-hi Normal ctermfg=white
+let g:seoul256_background = 234
+colo seoul256
 hi SneakLabel ctermfg=black ctermbg=white
 filetype plugin indent off
-nnoremap K 12k
+nnoremap K <Nop>
 nnoremap Q <Nop>
 nnoremap <F1> :noh<CR><Esc><C-G>
 imap <F1> <nop>
@@ -73,10 +59,10 @@ nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 
 nnoremap <silent> <Leader>. <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <Leader>\ <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> ]g <cmd>lua vim.diagnostic.goto_next()<CR>
-nnoremap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <Leader>j <cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent> <Leader>k <cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> <Leader>/ <cmd>lua require('fzf-lua').lgrep_curbuf()<CR>
-nnoremap <silent> <Leader>j <cmd>lua require('fzf-lua').files()<CR>
+nnoremap <silent> <Leader>f <cmd>lua require('fzf-lua').files()<CR>
 
 nnoremap <C-B> :Buffers
 let g:sneak#label = 1
