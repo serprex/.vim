@@ -23,6 +23,7 @@ set lazyredraw
 set ttyfast
 set ru
 set encoding=utf8
+set termguicolors
 set noswapfile
 set shortmess+=I
 set whichwrap+=<,>,[,]
@@ -41,9 +42,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype gitcommit setlocal formatoptions-=t
 set cursorline
 syntax on
-let g:seoul256_srgb = 1
-let g:seoul256_background = 234
-colo seoul256
+colo rosebones
 filetype plugin indent off
 nnoremap K <Nop>
 nnoremap Q <Nop>
