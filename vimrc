@@ -26,7 +26,7 @@ set encoding=utf8
 set termguicolors
 set noswapfile
 set shortmess+=I
-set whichwrap+=<,>,[,]
+set whichwrap+=<,>,[,],h,l
 set wildmenu
 set wildmode=longest:list,full
 set wildignore+=*.o
@@ -42,7 +42,9 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype gitcommit setlocal formatoptions-=t
 set cursorline
 syntax on
+let g:rosebones_transparent_background=v:true
 colo rosebones
+hi gitcommitSummary guifg=#C0C0C0
 filetype plugin indent off
 nnoremap K <Nop>
 nnoremap Q <Nop>
