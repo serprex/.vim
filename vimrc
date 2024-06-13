@@ -46,7 +46,6 @@ let g:rosebones_transparent_background=v:true
 colo rosebones
 hi gitcommitSummary guifg=#C0C0C0
 filetype plugin indent off
-nnoremap K <Nop>
 nnoremap Q <Nop>
 nnoremap <F1> :noh<CR><Esc><C-G>
 imap <F1> <nop>
@@ -60,8 +59,8 @@ nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 
 nnoremap <silent> <Leader>. <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <Leader>\ <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> <Leader>j <cmd>lua vim.diagnostic.goto_next()<CR>
-nnoremap <silent> <Leader>k <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <Leader>n <cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent> <Leader>e <cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> <Leader>/ <cmd>lua require('fzf-lua').lgrep_curbuf()<CR>
 nnoremap <silent> <Leader>f <cmd>lua require('fzf-lua').files()<CR>
 
@@ -73,8 +72,22 @@ endif
 
 if has('nvim')
 	lua << EOF
-	local nvim_lsp = require 'lspconfig'
+	local modes = {'n', 'x', 'o'}
+	vim.keymap.set(modes, 'n', 'j')
+	vim.keymap.set(modes, 'N', 'J')
+	vim.keymap.set(modes, 'm', 'h')
+	vim.keymap.set(modes, 'e', 'k')
+	vim.keymap.set(modes, 'E', 'm')
+	vim.keymap.set(modes, 'i', 'l')
+	vim.keymap.set(modes, 'I', 'L')
+	vim.keymap.set(modes, 'l', 'n')
+	vim.keymap.set(modes, 'L', 'N')
+	vim.keymap.set(modes, 'h', 'i')
+	vim.keymap.set(modes, 'H', 'I')
+	vim.keymap.set(modes, 'k', 'e')
+	vim.keymap.set(modes, 'K', 'E')
 
+	local nvim_lsp = require 'lspconfig'
 	nvim_lsp.rust_analyzer.setup {
 		settings = {
 			["rust-analyzer"] = {
