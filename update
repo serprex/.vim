@@ -9,7 +9,7 @@ git clone git@github.com:neovim/nvim-lspconfig --single-branch &
 git clone git@github.com:sbdchd/neoformat --single-branch &
 git clone git@github.com:ibhagwan/fzf-lua --single-branch &
 git clone git@github.com:rktjmp/lush.nvim --single-branch &
-git clone git@github.com:mcchrish/zenbones.nvim --single-branch &
+git clone git@github.com:savq/melange-nvim --single-branch &
 wait
 ) 2>/dev/null
 popd

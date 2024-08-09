@@ -42,9 +42,11 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype gitcommit setlocal formatoptions-=t
 set cursorline
 syntax on
-let g:rosebones_transparent_background=v:true
-colo rosebones
+let g:melange_transparent_background=v:true
+colo melange
 hi gitcommitSummary guifg=#C0C0C0
+hi Normal guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
 filetype plugin indent off
 nnoremap Q <Nop>
 nnoremap <F1> :noh<CR><Esc><C-G>
@@ -54,8 +56,8 @@ nmap <silent> <F1> :noh<CR>
 nmap ; :
 map Y y$
 nnoremap <silent> <CR> :noh<CR><CR><C-G>
-nnoremap <silent> <Space> :noh<CR><Space><C-G>
-nnoremap <Leader>gm /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
+nnoremap <Space> <C-W>
+nnoremap <Leader>m /\v^\<\<\<\<\<\<\< \|\=\=\=\=\=\=\=$\|\>\>\>\>\>\>\> /<CR>
 
 nnoremap <silent> <Leader>. <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <Leader>\ <cmd>lua vim.lsp.buf.references()<CR>
@@ -67,7 +69,7 @@ nnoremap <silent> <Leader>f <cmd>lua require('fzf-lua').files()<CR>
 nnoremap <C-B> :Buffers
 map z <Plug>(leap)
 if filereadable('/mnt/c/Windows/System32/clip.exe')
-	xnoremap <Leader>m <esc>:'<,'>w !/mnt/c/Windows/System32/clip.exe<CR>
+	xnoremap <Leader>c <esc>:'<,'>w !/mnt/c/Windows/System32/clip.exe<CR>
 endif
 
 if has('nvim')
