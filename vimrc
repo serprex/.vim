@@ -65,6 +65,7 @@ nnoremap <silent> <Leader>n <cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap <silent> <Leader>e <cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> <Leader>/ <cmd>lua require('fzf-lua').lgrep_curbuf()<CR>
 nnoremap <silent> <Leader>f <cmd>lua require('fzf-lua').files()<CR>
+nnoremap <silent> <Leader>t <cmd>Texplore */%:t<CR>
 
 nnoremap <C-B> :Buffers
 map z <Plug>(leap)
@@ -94,7 +95,7 @@ if has('nvim')
 		settings = {
 			["rust-analyzer"] = {
 				diagnostics = {
-					enable = false,
+					enable = true,
 				},
 				assist = {
 					importGranularity = "module",
@@ -102,7 +103,6 @@ if has('nvim')
 				},
 				cargo = {
 					loadOutDirsFromCheck = true,
-					features = { 'rust-analyzer.cargo.features' },
 				},
 				procMacro = {
 					enable = true,
@@ -115,6 +115,7 @@ if has('nvim')
 			gopls = {gofumpt = true},
 		}
 	}
+	nvim_lsp.ts_ls.setup{}
 	nvim_lsp.lua_ls.setup{
 		settings = {
 			diagnostics = {
