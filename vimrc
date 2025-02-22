@@ -112,7 +112,7 @@ if has('nvim')
 	}
 	nvim_lsp.gopls.setup {
 		settings = {
-			gopls = {gofumpt = true},
+			gopls = {gofumpt = true, analyses = { modernize = false }},
 		}
 	}
 	nvim_lsp.ts_ls.setup{}
