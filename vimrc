@@ -31,7 +31,6 @@ set wildmenu
 set wildmode=longest:list,full
 set wildignore+=*.o
 set completeopt-=preview
-set pastetoggle=<F2>
 let g:mapleader=","
 let g:netrw_dirhistmax=0
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
