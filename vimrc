@@ -89,40 +89,47 @@ if has('nvim')
 	vim.keymap.set(modes, 'k', 'e')
 	vim.keymap.set(modes, 'K', 'E')
 
-	local nvim_lsp = require 'lspconfig'
-	nvim_lsp.rust_analyzer.setup {
-		settings = {
-			["rust-analyzer"] = {
+	local lsp = {
+		['rust_analyzer'] = {
+			settings = {
+				["rust-analyzer"] = {
+					diagnostics = {
+						enable = true,
+					},
+					assist = {
+						importGranularity = "module",
+						importPrefix = "by_self",
+					},
+					cargo = {
+						loadOutDirsFromCheck = true,
+					},
+					procMacro = {
+						enable = true,
+					},
+				}
+			}
+		},
+		['gopls'] = {
+			settings = {
+				gopls = {gofumpt = true, analyses = { modernize = false }},
+			}
+		},
+		['ts_ls'] = false,
+		['clangd'] = false,
+		['lua_ls'] = {
+			settings = {
 				diagnostics = {
-					enable = true,
-				},
-				assist = {
-					importGranularity = "module",
-					importPrefix = "by_self",
-				},
-				cargo = {
-					loadOutDirsFromCheck = true,
-				},
-				procMacro = {
-					enable = true,
-				},
+					disable = {"lowercase-global"}
+				}
 			}
-		}
+		},
 	}
-	nvim_lsp.gopls.setup {
-		settings = {
-			gopls = {gofumpt = true, analyses = { modernize = false }},
-		}
-	}
-	nvim_lsp.ts_ls.setup{}
-	nvim_lsp.clangd.setup{}
-	nvim_lsp.lua_ls.setup{
-		settings = {
-			diagnostics = {
-				disable = {"lowercase-global"}
-			}
-		}
-	}
+	for k, v in pairs(lsp) do
+		if v then
+			vim.lsp.config(k, v)
+		end
+		vim.lsp.enable(k)
+	end
 EOF
 endif
 
