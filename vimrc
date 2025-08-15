@@ -115,6 +115,7 @@ if has('nvim')
 		}
 	}
 	nvim_lsp.ts_ls.setup{}
+	nvim_lsp.clangd.setup{}
 	nvim_lsp.lua_ls.setup{
 		settings = {
 			diagnostics = {

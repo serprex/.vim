@@ -2,7 +2,7 @@
 pushd ${0%/*}
 mkdir -p pack/pack/start
 pushd pack/pack/start
-(git clone git@github.com:editorconfig/editorconfig-vim --single-branch &
+(
 git clone git@github.com:ggandor/leap.nvim --single-branch &
 git clone git@github.com:tpope/vim-sleuth --single-branch &
 git clone git@github.com:neovim/nvim-lspconfig --single-branch &
